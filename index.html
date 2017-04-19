@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">  
+  <title>UNICENS</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    
+    #editor { 
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<pre id="editor"></pre>
+
+<!-- load ace -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ext-language_tools.js"></script>
+<!-- load jquery -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+  
+    function startEditor(data) {
+      // trigger extension
+      var staticWordCompleter = {
+          getCompletions: function(editor, session, pos, prefix, callback) {
+              var wordList = ["Unicens", "Node", "Script","SyncConnection","AVPConnection"];
+              callback(null, wordList.map(function(word) {
+                  return {
+                      caption: word,
+                      value: word,
+                      meta: "static"
+                  };
+              }));
+
+          }
+      }  
+      ace.require("ace/ext/language_tools");
+      var editor = ace.edit("editor");
+      editor.session.setMode("ace/mode/xml");
+      editor.setTheme("ace/theme/chrome");
+      // enable autocompletion and snippets
+      editor.setOptions({
+          fontSize : "14px",
+          enableBasicAutocompletion: true,
+          enableSnippets: true,
+          enableLiveAutocompletion: false
+      });
+      editor.completers = [staticWordCompleter];  
+      editor.$blockScrolling = Infinity;      
+      return editor;
+    }
+  
+     var xmlLoadedCallback = function (data, status, xhr) {
+        //data will be the xml returned from the server
+        if (status == 'success') {
+            var editor = startEditor();
+            editor.setValue(data);
+            editor.focus();            
+        }
+    };
+  
+    $.ajax(
+        {
+            url : '/unicens.xml',
+            dataType : 'text', //explicitly requesting the xml as text, rather than an xml document
+            success : xmlLoadedCallback
+        }
+    );  
+</script>
+
+<!--<script src="./show_own_source.js"></script>-->
+</body>
+</html>
