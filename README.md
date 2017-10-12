@@ -1,6 +1,6 @@
 # UNICENS - Automotive Networking Made Easy
 Schema:
-  * [Draft-01](https://unicens.github.io/draft-01/system.xsd)
+  * [UNICENS System Schema - Draft-01 [Oct 12, 2017]](https://unicens.github.io/draft-01/system.xsd)
   
 Links:
   * [Press Release](https://www.microchip.com/pressreleasepage/microchip-s-unicens-software)
