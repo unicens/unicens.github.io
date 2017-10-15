@@ -239,7 +239,7 @@
 	require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.0/min/vs' }});
 	require(['vs/editor/editor.main'], function() {
 		createEditor();
-		loadXmlIntoEditor('https://raw.githubusercontent.com/unicens/unicens.github.io/master/demo/sample.xml');
+		loadXmlIntoEditor('sample.xml');
 		// register binding
 		decorations = editor.deltaDecorations([], getDecorataionsList());
 		// update decorations based on new model
