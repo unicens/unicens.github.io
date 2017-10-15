@@ -1,315 +1,519 @@
 <!DOCTYPE html>
-<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
-<html lang="en-us">
-
+<html lang="en">
 <head>
-<!-- Load the Paper.js library -->
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.22/paper.min.js"></script> -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.min.js"></script>
-<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<style type="text/css">
+		.hiddenfile {
+		 top:-100px;
+		}
+		.Unicens-glyph:before {
+    		content: "\f1b3";
+    		position : relative;
+    		left : 3px;
+    		color : #944;
+    		font-family: FontAwesome;
+		}
+		.Node-glyph:before {
+    		content: "\f1b2";
+    		position : relative;
+    		left : 3px;
+    		color : #944;
+    		font-family: FontAwesome;
+		}		
+		.SyncConnection-glyph:before {
+    		content: "\f0ec";
+    		position : relative;
+    		left : 3px;
+    		color : #494;
+    		font-family: FontAwesome;			
+		}		
+		
+		.MOSTSocket-glyph:before {
+    		content: "\f1e6";
+    		position : relative;
+    		left : 5px;
+    		color : #f99;
+    		font-family: FontAwesome;			
+		}
+		.USBSocket-glyph:before {
+    		content: "\f287";
+    		position : relative;
+    		left : 24px;
+    		color : #494;
+    		font-family: FontAwesome;			
+		}
+		.StreamSocket-glyph:before {
+    		content: "\f1da";
+    		position : relative;
+    		left : 24px;
+    		color : #494;
+    		font-family: FontAwesome;			
+		}		
+		.MediaLBSocket-glyph:before {
+    		content: "\f1e0";
+    		position : relative;
+    		left : 3px;
+    		color : #494;
+    		font-family: FontAwesome;			
+		}
+		.Combiner-glyph:before {
+    		content: "C";
+    		position : relative;
+    		left : 3px;
+    		color : #944;
+		}
+		.Splitter-glyph:before {
+    		content: "S";
+    		position : relative;
+    		left : 3px;
+    		color : #944;
+		}
+		/*USB content: "\f287";*/
+		.StreamPort-glyph:before {
+    		content: "\f2db";
+    		position : relative;
+    		left : 3px;
+    		color : #494;
+    		font-family: FontAwesome;			
+		}
+		.USBPort-glyph:before {
+    		content: "\f2db";
+    		position : relative;
+    		left : 24px;
+    		color : #494;
+    		font-family: FontAwesome;			
+		}		
+		.Script-glyph:before {
+    		content: "\f0f6"; 
+    		position : relative;
+    		left : 4px;
+    		color : #448;
+    		font-family: FontAwesome;			
+		}		
+		.I2CPortCreate-glyph:before {
+    		content: "\f1b2";
+    		position : relative;
+    		left : 24px;
+    		color : #448;
+    		font-family: FontAwesome;			
+		}
+		.I2CPortWrite-glyph:before {
+    		content: "\f045";
+    		position : relative;
+    		left : 24px;
+    		color : #448;
+    		font-family: FontAwesome;			
+		}
+		.GPIOPortPinMode-glyph:before {
+    		content: "\f0eb"; 
+    		position : relative;
+    		left : 26px;
+    		color : #448;
+    		font-family: FontAwesome;			
+		}
+		.comment-glyph:before {
+    		content: "\f27b"; 
+    		position : relative;
+    		left : 3px;
+    		color : #888;
+    		font-family: FontAwesome;			
+		}
+		
+		.Route-line {
+			border-style: dotted;
+			border-radius: 6px;
+			border-right: thick #ff0000;
+			padding : 0px 0px 0px 120px;
+			margin : -0px -7px;
+			border-width : 1.3pt;
+			border-color : #f00;
+			box-sizing : border-box;
+		}
+		.Route-in-glyph:after {
+    		content: "IN"; 
+    		position : relative;
+    		left : 10px;
+    		color : #f77;
+		}
+		.Route-out-glyph:after {
+    		content: "OUT"; 
+    		position : relative;
+    		left : 10px;
+    		color : #f88;
+		}		
+		.Script-line {
+			border-style: dotted;
+			border-radius: 4px;
+			border-right: thick #ff0000;
+			padding : 0px 0px 0px 60px;
+			margin : -0px -7px;
+			border-width : 1.3pt;
+			border-color : #00f;
+			box-sizing : border-box;
+		}		
+		.Script-link-glyph:after {
+    		content: "\f0c1"; 
+    		font-size: 12px;
+    		position : relative;
+    		left : 4px;
+    		top: 5px;
+    		color : #a22;
+    		font-family: FontAwesome;			
+		}
+		.Timeout-wait-glyph:after {
+    		content: "\f252"; 
+    		font-size: 10px;
+    		position : relative;
+    		left : -1px;
+    		top: -2px;
+    		color : #88f;
+    		font-family: FontAwesome;			
+		}
+        html, body, .rb {
+            margin: 0;
+            height: 100%;
+        }
+        .rb {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .top, .editor {
+            display: table-row;
+        }
 
-<!-- Font Awesome -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
-<title>Hello...</title>
-<style type="text/css">
-#mainContent {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: xx-large;
-	font-weight: bold;
-	background-color: #E3F0FB;
-	border-radius: 4px;
-	padding: 10px;
-	text-align: center;
-}
-.buttonStyle {
-	border-radius: 4px;
-	border: thin solid #F0E020;
-	padding: 5px;
-	background-color: #F8F094;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: bold;
-	color: #663300;
-	width: 75px;
-}
-
-#canvas  {
-	width: 100%;
-	height : 1000px;
-}
-
-.buttonStyle:hover {
-	border: thin solid #FFCC00;
-	background-color: #FCF9D6;
-	color: #996633;
-	cursor: pointer;
-}
-.buttonStyle:active {
-	border: thin solid #99CC00;
-	background-color: #F5FFD2;
-	color: #669900;
-	cursor: pointer;
-}
-#filedrag
-{
-	display: none;
-	font-weight: bold;
-	text-align: center;
-	padding: 1em 0;
-	margin: 1em 0;
-	color: #555;
-	border: 2px dashed #555;
-	border-radius: 7px;
-	cursor: default;
-}
-#filedrag.hover
-{
-	color: #f00;
-	border-color: #f00;
-	border-style: solid;
-	box-shadow: inset 0 3px 4px #888;
-}
-
-</style>
+        .buffer {
+            display: table-cell;
+        }
+        .top .buffer {
+            height:1%;
+        }
+        #container {
+            position:relative;
+        }
+        #container > * {
+            overflow:auto;
+            max-width:100%;
+            max-height:100%;
+        }
+		[hidden] {
+		  display: none !important;
+		}
+		#open-menu {
+			margin : 0px 0px 0px 6px;
+			width : 200px;
+			text-align : left;
+		}
+	</style>
 </head>
-
 <body>
-	<i class="fa fa-arrow-circle-up"></i>
-<canvas id="canvas" resize></canvas>
 
-<script> 
-  paper.install(window);
-  
-  var nodeSize = 48;
-  var textSize = 12;
-   
-  var phyColor = 'red';
-  var networkLocked = true;
+<div class="rb">
+    <div class="top">
+        <div class="buffer">
+			<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    File</span>
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a id='new' href="#">New</a></li>
+				<label class="btn" id='open-menu'>Open<input type="file" id='file' hidden></label>
+			    <li><a id='save' href="#">Save as...</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a id='sample1' href="#">Multichannel Audio Example</a></li>
+			    <li><a id='sample2' href="#">USB Client/Server Example</a></li>
+			  </ul>
+			</div>
+			<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Help</span>
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a id='about' href="#" data-toggle="modal" data-target="#aboutDialog">About</a></li>
+			  </ul>
+			</div>
+        </div>
+    </div>
+    <div class="editor">
+        <div class="buffer" id="container">
+        </div>
+    </div>
+</div>
 
-  var dict = {
-  	'MOSTSocket' : 'NET',
-  	'StreamSocket' : 'I2S',
-  	'MediaLBSocket' : 'MLB',
-  	'USBSocket' : 'USB',
-  	'Splitter' : 'SPL',
-  	'Combiner' : 'CMB'
-  }
-  
-  //var rendering = 'ring';
-  var rendering = 'daisy';  
+<!-- Modal -->
+<div id="aboutDialog" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-	//myButton.addEventListener('click', doSomething, false)
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">About</h4>
+      </div>
+      <div class="modal-body">
+        <p>Cloud based editor for <a href='http://www.microchip.com/design-centers/automotive/most/unicens'>UNICENS</a> configuration files.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
-function xlt(term) {
-	if (dict[term]) {
-		return dict[term];
-	} else {
-		return term;
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.0/min/vs/loader.js"></script>
+
+<script>
+   "use strict";
+    var $;
+    var monaco;
+	var showDecorations = true;
+	var decorations;
+	var editor;
+	var xml;
+	var xmlText;
+	var model;
+	var lines=[];
+
+	// A $( document ).ready() block.
+	$( document ).ready(function() {
+	    console.log( "ready!" );
+		require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.0/min/vs' }});
+		require(['vs/editor/editor.main'], function() {
+			createEditor();
+			loadXmlIntoEditor('sample.xml');
+			// register binding
+			decorations = editor.deltaDecorations([], getDecorataionsList());
+			// update decorations based on new model
+			editor.onDidChangeModelContent(function(e) { 
+				lines = model.getValue().split(/\r?\n/);
+				var newDecorationsList = getDecorataionsList();
+				decorations = editor.deltaDecorations(decorations, newDecorationsList);
+			});
+		});
+	});
+	$('#new').on('click', function(event) {
+	  event.preventDefault();
+	  loadXmlIntoEditor('new.xml');
+	});
+	
+	$('#open').on('click', function(event) {
+	  //event.preventDefault();
+	  $('#file').trigger("click");
+	});
+	
+	$('#save').on('click', function(event) {
+	  event.preventDefault();
+	   saveEditorFile(getXmlTextFromEditor(),'configuration.xml');
+	  /*
+	  var anchor = document.querySelector('#save');
+	  console.log(anchor);
+      anchor.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(getXmlTextFromEditor());
+      console.log(anchor.href);
+      anchor.download = 'configuration.xml';	  
+      */
+	});	
+	$('#sample1').on('click', function(event) {
+	  event.preventDefault();
+	  loadXmlIntoEditor('https://raw.githubusercontent.com/MicrochipTech/unicens-linux-daemon/master/cfg/config_multichannel_audio_kit.xml');
+	});
+	$('#sample2').on('click', function(event) {
+	  event.preventDefault();
+	  loadXmlIntoEditor('https://raw.githubusercontent.com/MicrochipTech/unicens-linux-daemon/master/cfg/config_all_devices.xml');
+	});
+	$('#about').on('click', function(event) {
+	  event.preventDefault();
+	  
+	  
+	});
+	document.getElementById('file').onchange = function(){
+	  var file = this.files[0];
+	  var reader = new FileReader();
+	  reader.onload = function(progressEvent){
+	  	updateEditorFromText(this.result);
+	  	$('#file-name').html(file);
+	  };
+	  reader.readAsText(file);
+	};
+
+	function createEditor() {
+	editor = monaco.editor.create(document.getElementById('container'), {
+		value: [
+			'<?xml version="1.0" encoding="UTF-8"?>',
+			'<Unicens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" AsyncBandwidth="20" xsi:noNamespaceSchemaLocation="unicens.xsd">',
+		].join('\n'),
+		//theme: "vs-dark",
+		folding : true,
+		lineNumbers : true,
+		glyphMargin: true,
+		roundedSelection: true,
+		scrollBeyondLastLine: false,
+		automaticLayout: true,
+		language: 'xml'
+		});
 	}
-}
-
-    // parameters
-    var headLength = 10;
-    var headAngle = 150;
-    var arrowColor = 'black';
-
-    // the arrow
-    var arrow = null;
-
-    function drawArrow(start, end) {
-
-        var tailLine = new Path.Line(start, end);
-        var tailVector = end - start;
-        var headLine = tailVector.normalize(headLength);
-
-    	arrow = new Group([
-	    	new Path([start, end]),
-		    new Path([
-			    end + headLine.rotate(headAngle),
-			    end,
-			    end + headLine.rotate(-headAngle)
-		    ])
-	    ]);
 	
-	    arrow.strokeColor = arrowColor;
-    }
-    
-    
-function drawText(x,y,color,stroke,size,caption) {
-	var text = new PointText(new Point(x, y+2));
-	text.justification = 'center';
-	text.fontSize = textSize * size;
-	text.fillColor ='white';
-	text.content = caption;
-	
-	var text = new PointText(new Point(x, y-2));
-	text.justification = 'center';
-	text.fontSize = textSize * size;
-	text.fillColor ='white';
-	text.content = caption;	
-	
-	var text = new PointText(new Point(x-2, y));
-	text.justification = 'center';
-	text.fontSize = textSize * size;
-	text.fillColor ='white';
-	text.content = caption;		
-	
-	var text = new PointText(new Point(x+2, y));
-	text.justification = 'center';
-	text.fontSize = textSize * size;
-	text.fillColor ='white';
-	text.content = caption;			
-	
-	var text = new PointText(new Point(x, y));
-	text.justification = 'center';
-	text.fontSize = textSize * size;
-	text.fillColor =color;
-	text.content = caption;	
-}
+	//You can get the current line text via: editor.getModel().getLineContent(editor.getPosition().lineNumber)
+	//There are many events on the editor such as editor.onDidChangeModelContent(function(e) { console.log(e); })
+	//You can invoke the indent action via editor.trigger('anyString', 'editor.action.indentLines', null) and the outdent via editor.trigger('anyString', 'editor.action.outdentLines', null)
+	//monaco.editor.setModelMarkers(editor.editor.getModel(), 'java', monacoErrors);
 
-function drawNode(x,y,size,xmlNode) {
-    var address = xmlNode.getAttribute("Address");
-    var name = xmlNode.getAttribute("Name");
-    var script = xmlNode.getAttribute("Script");
-    var childNodes = xmlNode.children;
-    nodeSize = 100;
-
-	//var node = new Path.Circle(new Point(x, y), size);
-	//node.fillColor = '#ffeeee';
-	//node.strokeColor = 'red';
-	
-	var ofsx = x;
-	var ofsy = y;
-	var height = 0;
-
-	var text = address;
-	if (name) {
-		text = name + ' ['+address + ']';
+	//load XML into editor, initializes globals
+	function loadXmlIntoEditor(fileName) {
+		xmlText=loadXmlText(fileName);
 	}
-	drawText(ofsx,ofsy,'black','red',0.8,text);
 	
-	//drawText(ofsx,ofsy,'black','red',0.8,(name) ? address : name + ' [' + address + ']');
-	//drawText(ofsx,ofsy,'black','red',0.8,script);
+	function saveEditorFile(content,savedFileName) {
+		var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+		saveAs(blob, savedFileName);
+	}
+	
+	function getXmlTextFromEditor() {
+		model = editor.getModel();
+		return model.getValue();
+	}
 
-	// paint routing
-	for (var i=0; i<childNodes.length;i++) {
-		var routeElement = xmlNode.children[i];
-		var tagName = routeElement.tagName;
-		if (tagName.toLowerCase().indexOf('connection')>=0) {
-			var source = routeElement.children[0];
-			var sink = routeElement.children[1];
-			var sourceId = xlt(source.tagName);
-			var sinkId = xlt(sink.tagName);
-			var line;
-			if ('NET,CMB,SPL'.indexOf(sourceId)>=0) {
-				// FROM NET TO PERIPHERIALS (from NET)
-				if ('CMB,SPL'.indexOf(sourceId)>=0) {
-					// splitter, combiner
-					var offsets = source.children;
-					for (var j=0;j<offsets.length;j++) {
-						var ofsElement=offsets[j];
-						var prefix = ofsElement.getAttribute('Offset');
-						sourceId = xlt(ofsElement.tagName);
-						drawText(ofsx - nodeSize,ofsy,'red','white',0.7,sourceId+'-'+prefix+'>');
-						drawText(ofsx + nodeSize,ofsy,'green','white',0.7,'>'+sinkId);
-						height+=16;ofsy+=height;
-					}
-				} else {
-					// simple socket
-					drawText(ofsx - nodeSize,ofsy,'red','white',0.7,sourceId+'>');
-					drawText(ofsx + nodeSize,ofsy,'green','white',0.7,'>'+sinkId);
-					height+=16;ofsy+=height;
+	function updateEditorFromText(xmlText) {
+		model = editor.getModel();
+		model.setValue(xmlText);
+		lines = model.getValue().split(/\r?\n/);
+	}
+	
+	// apply decorations
+	function getDecorataionsList() {
+		
+		// insert decorations
+		if (showDecorations) {
+			var decorationsList = [];
+			var hitCounter=0;
+			for (var lineNumber in lines) {
+				var line=lines[lineNumber];
+				
+				lineNumber = parseInt(lineNumber);
+				
+				pushTagDecoration(line,lineNumber,'Unicens',decorationsList);
+				pushTagDecoration(line,lineNumber,'Node',decorationsList);
+
+				if (
+				pushTagDecoration(line,lineNumber,'SyncConnection',decorationsList)
+				) {
+					hitCounter=0;
 				}
-			} else {
-				// FROM PERIPHERIALS TO NET (to NET)
-				drawText(ofsx - nodeSize,ofsy,'red','white',0.7,'<'+sinkId);
-				drawText(ofsx + nodeSize,ofsy,'green','white',0.7,sourceId+'<');
-				height+=16;ofsy+=height;
+				
+				// network 
+				if (
+				pushTagDecoration(line,lineNumber,'MOSTSocket',decorationsList)||
+				pushTagDecoration(line,lineNumber,'Splitter',decorationsList)||
+				pushTagDecoration(line,lineNumber,'Combiner',decorationsList)
+				) {
+					//hitCounter=0;
+				}
+				
+				// peripherials
+				if (
+				pushTagDecoration(line,lineNumber,'USBSocket',decorationsList)||
+				pushTagDecoration(line,lineNumber,'StreamSocket',decorationsList)||
+				pushTagDecoration(line,lineNumber,'MediaLBSocket',decorationsList)||
+				pushTagDecoration(line,lineNumber,'StreamPort',decorationsList)
+				) {
+					hitCounter=1;
+				}
+				
+				// script
+				pushTagDecoration(line,lineNumber,'Script',decorationsList);				
+				pushTagDecoration(line,lineNumber,'I2CPortCreate',decorationsList);
+				pushTagDecoration(line,lineNumber,'I2CPortWrite',decorationsList);
+				pushTagDecoration(line,lineNumber,'GPIOPortPinMode',decorationsList);
+				pushAttributeDecoration(line,lineNumber,'Timeout',decorationsList,'wait');
+				
+				// route attribute
+				pushAttributeDecoration(line,lineNumber,'Route',decorationsList,hitCounter == 1 ? 'out' : 'in');
+				// script attribute
+				pushAttributeDecoration(line,lineNumber,'Script',decorationsList,'link');
+				
+				// other
+				pushTagDecoration(line,lineNumber,'!--',decorationsList);
 			}
+			return decorationsList;
 		}
 	}
-
-	if (script) {
-		
+	
+	// Pushes a decoration into decorationsList
+	function pushTagDecoration(line,lineNumber,tag,decorationsList) {
+		var match=false;
+		var openTagIndex=line.indexOf('<'+tag);
+		var closeTagIndex=line.indexOf('</'+tag);
+		if (tag=='!--') {
+			tag='comment';
+		}
+		if (
+			(openTagIndex>=0)
+			//||(closeTagIndex>=0)
+			) {
+			match=true;
+			decorationsList.push({
+					range: new monaco.Range(lineNumber+1,openTagIndex,lineNumber+1,openTagIndex+tag.length),
+					options: {
+						isWholeLine: true,
+						className: tag+'-line',
+						glyphMarginClassName: tag+'-glyph'
+					}
+				}				
+				);
+		}
+		return match;
 	}
 	
-	height+=16;ofsy+=height;
+	// Pushes a decoration into decorationsList
+	function pushAttributeDecoration(line,lineNumber,text,decorationsList,direction) {
+		var match=false;
+		var search = line.replace(/\s/g, '');
+		var textIndex=line.indexOf(text);
+		if (search.indexOf(text+'="')>=0) {
+			match=true;
+			decorationsList.push({
+					range: new monaco.Range(lineNumber+1,textIndex+1,lineNumber+1,textIndex+text.length+1),
+					options: {
+						isWholeLine: false,
+						className: text+'-line',
+						glyphMarginClassName: text+'-'+direction+'-glyph'
+					}
+				}				
+				);
+		}
+		return match;
+	}	
 	
-    //var node = new Path.Rectangle(x-size, y-height/2+4, size*2, height);
-	//node.fillColor = '#d0d0d0';
-	//node.opacity = 0.3;
-	//node.strokeColor = 'red';
-
-	return height;
-}
-
-function loadXml() {
-  
-  var canvas = document.getElementById('canvas');
-  
-  paper.setup(canvas);
-  
-  var w = canvas.width;
-  var h = canvas.height;
-  
-  var cx = w/2;
-  var cy = h/2;
-  var networkRadius = Math.min(cx,cy) * 0.7;
-  var routeRadius = Math.min(cx,cy) * 0.4;
-	
-  // Create a connection to the file.
-  var Connect = new XMLHttpRequest();
-  
-  Connect.open("GET", "sample.xml", false);
-  Connect.setRequestHeader("Content-Type", "text/xml");
-  Connect.send(null);
-  
-  var xml = Connect.responseXML;
-  
-  var unicens = xml.childNodes[0];
-  
-  var nodes = unicens.getElementsByTagName('Node');
-  var scripts = unicens.getElementsByTagName('Scripts');
+	//Load XML and return the XML DOM object
+    function loadXml(fileName) {
+      var Connect = new XMLHttpRequest();
+      Connect.open("GET", fileName, false);
+      Connect.setRequestHeader("Content-Type", "text/xml");
+      Connect.send(null);
+      //var unicens = xml.childNodes[0];
+      return Connect.responseXML;
+    }
     
-  switch (rendering) {
-  	case 'ring' : 
-		var networkPhy = new Path.Circle(new Point(cx, cy), routeRadius);
-		networkPhy.strokeColor = networkLocked ? phyColor : 'gray';
-  		break;
-  }
+    function loadXmlText(fileName) {
+		$.ajax({
+		            url : fileName,
+		            dataType: "text",
+		            success : function (data) {
+		                updateEditorFromText(data);
+		            }
+		        });
+    }
 
-  var x = 200 + nodeSize * 1.6;
-  var y = nodeSize * 1;
-  var ofs = y;
-  for (var i = 0; i < nodes.length; i++)
-  {
-   var node = nodes[i];
-	switch (rendering) {   
-		case 'ring' : 
-			drawNode(cx + networkRadius * Math.sin(2*Math.PI*i/nodes.length), cy + networkRadius*Math.cos(2*Math.PI*i/nodes.length), nodeSize,node);
-			break;
-		case 'daisy' : 
-			ofs += drawNode(x,ofs,nodeSize,node)+10;
-			
-			break;
-	}
-  }
-  
-  paper.view.draw();
-  
-function onFrame(event) {
-
-	}  
-	
-}
-
-function doSomething() {
-	loadXml();
-}
-
-loadXml();
+    
 </script>
 
 </body>
 </html>
-
